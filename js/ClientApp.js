@@ -1,15 +1,14 @@
 import React from 'react';
 import { render } from 'react-dom';
-import MyTitle from './MyTitle';
 
-const MyFirstComponent = function() {
-  return (
-    <div>
-      <MyTitle title="House of Cards" color="rebeccapurple"></MyTitle>
-      <MyTitle title="Orange is the New Black" color="mediumaquamarine"></MyTitle>
-      <MyTitle title="Stranger Things" color="peru"></MyTitle>
+const App = () => (
+  <div className="app">
+    <div className="landing">
+      <h1>myvideo</h1>
+      <input type="text" placeholder="Search" />
+      <a>or Browse All</a>
     </div>
-  );
-};
+  </div>
+);
 
-render(<MyFirstComponent />, document.getElementById('app'));
+render(<App />, document.getElementById('app'));

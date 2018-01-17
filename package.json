@@ -3,7 +3,8 @@
     "api": "node ratingsAPI.js",
     "format": "prettier --single-quote --trailing-comma es5 --write \"{js, __{tests,mocks}__}/**/*.js\"",
     "lint": "eslint */*.{js,jsx} --debug",
-    "build": "webpack"
+    "build": "webpack --watch",
+    "dev": "webpack-dev-server"
   },
   "dependencies": {
     "axios": "0.16.1",
