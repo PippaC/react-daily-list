@@ -1,11 +1,17 @@
+// @flow
 import React, { Component } from 'react';
-import preload from '../data.json';
+import { render } from 'react-dom';
+
 import ShowCard from './ShowCard';
 
+
+
 class Search extends Component {
-  state = { searchTerm: 'Enter search term.'};
-  
-  handleSearchTermChange = (event) => {
+  state = { searchTerm: '' };
+  props: {
+    shows: Array<Show>
+  };
+  handleSearchTermChange = (event: SyntheticKeyboardEvent & { target: HTMLInputElement }) => {
     this.setState({ searchTerm: event.target.value });
   }
 
@@ -13,13 +19,13 @@ class Search extends Component {
     return (
       <div className="search">
         <header>
-          <h1>svideo</h1>
+          <h1>MyVideo</h1>
           <input type='text' placeholder='Search' value={this.state.searchTerm} onChange={this.handleSearchTermChange} />
         </header>
 
-        {preload.shows
+        {this.props.shows
           .filter(
-            show => 
+            show =>
               `${show.title} ${show.description}`.toUpperCase().indexOf(this.state.searchTerm.toUpperCase()) >= 0
           )
           .map((show, index) => <ShowCard {...show} key={show.imdbID} />)}
