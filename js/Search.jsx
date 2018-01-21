@@ -1,10 +1,8 @@
 // @flow
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-
+import Header from './Header';
 import ShowCard from './ShowCard';
-
-
 
 class Search extends Component {
   state = { searchTerm: '' };
@@ -18,10 +16,7 @@ class Search extends Component {
   render() {
     return (
       <div className="search">
-        <header>
-          <h1>MyVideo</h1>
-          <input type='text' placeholder='Search' value={this.state.searchTerm} onChange={this.handleSearchTermChange} />
-        </header>
+        <Header showSearch handleSearchTermChange={this.handleSearchTermChange} searchTerm={this.state.searchTerm} />
 
         {this.props.shows
           .filter(
