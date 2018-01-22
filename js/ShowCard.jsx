@@ -1,11 +1,11 @@
 // @flow
 
 import React from 'react';
-import { shape, string } from 'prop-types';
+import { string } from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-const Wrapper = styled.a`
+const Wrapper = styled.div`
   width: 32%;
   border: 2px solid #333;
   border-radius: 4px;
@@ -27,7 +27,8 @@ const ShowCard = (
     poster: string,
     title: string,
     year: string,
-    description: string
+    description: string,
+    imdbID: string
   }
 ) => (
   <Link to={`/details/${props.imdbID}`}>

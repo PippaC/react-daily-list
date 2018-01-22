@@ -1,8 +1,7 @@
 // @flow
 
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import  { Match } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Match } from 'react-router-dom';
 import Landing from './Landing';
 import Search from './Search';
 import Details from './Details';
