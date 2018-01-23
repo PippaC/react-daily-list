@@ -2,13 +2,16 @@
 
 import React from 'react';
 import { BrowserRouter as Router, Route, Match } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import Landing from './Landing';
 import Search from './Search';
 import Details from './Details';
-import preload from '../data.json'
+import preload from '../data.json';
+import store from './store';
 
 const App = () => (
 <Router>
+  <Provider store={store}>
     <div className="app">
       <Route exact path="/" component={Landing} />
       <Route path="/search" component={props => <Search shows={preload.shows} {...props} />} />
@@ -20,6 +23,7 @@ const App = () => (
         }}
       />
     </div>
+  </Provider>
 </Router>
 
 );
