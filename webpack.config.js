@@ -1,15 +1,10 @@
 const path = require('path');
 const webpack = require('webpack');
 
-module.exports = {
+const config = {
   context: __dirname,
-  entry: [
-    'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:8080',
-    'webpack/hot/only-dev-server',
-    './js/ClientApp.jsx'
-  ],
-  devtool: 'cheap-eval-source-map',
+  entry: ['./js/ClientApp.jsx'],
+  devtool: process.env.NODE_ENV === 'development' ? 'cheap-eval-source-map' : false,
   output: {
     path: path.resolve(__dirname, 'public'),
     filename: 'bundle.js',
@@ -31,12 +26,12 @@ module.exports = {
   plugins: [new webpack.HotModuleReplacementPlugin(), new webpack.NamedModulesPlugin()],
   module: {
     rules: [
-      {
+      /*{
         enforce: 'pre',
         test: /\.jsx?$/,
         loader: 'eslint-loader',
         exclude: /node_modules/
-      },
+      },*/
       {
         test: /\.jsx?$/,
         loader: 'babel-loader'
@@ -44,3 +39,9 @@ module.exports = {
     ]
   }
 };
+
+if (process.env.NODE_ENV === 'development') {
+  config.entry.unshift('webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000');
+}
+
+module.exports = config;

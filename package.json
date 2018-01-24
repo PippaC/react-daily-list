@@ -3,8 +3,12 @@
     "api": "node ratingsAPI.js",
     "format": "prettier --single-quote --trailing-comma es5 --write \"{js, __{tests,mocks}__}/**/*.js\"",
     "lint": "eslint */*.{js,jsx} --debug",
-    "build": "webpack --watch",
-    "dev": "webpack-dev-server"
+    "build": "webpack -p",
+    "build:dev": "webpack -d",
+    "dev": "NODE_ENV=development nodemon server.js",
+    "start": "NODE_ENV=server node server.js",
+    "test": "jest",
+    "test:update": "NODE_ENV=test jest -u"
   },
   "dependencies": {
     "axios": "0.16.1",
